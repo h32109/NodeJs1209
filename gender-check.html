@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div id = "box">
+		<h3>성별은 무엇입니까?</h3>
+		<input type="radio" name="gender" value="M" checked> 남자
+		<input type="radio" name="gender" value="W" > 여자
+		<br>
+		<h3>결혼은 하셨나요?</h3>
+		<input type="radio" name="married" value="Y" checked> 기혼
+		<input type="radio" name="married" value="N" > 미혼
+		<br>
+		<br>
+		<input type="button" id = "btn" value="확인">
+	</div>
+	<script>
+		window.onload = ()=>{
+			const genders = document.getElementsByName('gender')
+			const married = document.getElementsByName('married')
+			const button = document.getElementById('btn')
+			const box = document.getElementById('box')
+			let memo = ''
+			btn.onclick = function(){
+				if(memo === ''){
+					let str = ''
+					str = (genders[0].checked == true) 
+					? (married[0].checked == true) 
+						? '<h1>기혼남성</h1>' : '<h1>미혼남성</h1>' 
+					: (married[0].checked == true) 
+						? '<h1>기혼여성</h1>' : '<h1>미혼여성</h1>'
+					box.removeChild(this) //박스 안을 비움(확인버튼까지.비우지 않으면 버튼 오버로딩.)
+					memo = box.innerHTML //memo는 박스의 텍스트값이다. 할당. (확인버튼의 기능)
+					box.innerHTML = str //box의 html에 str(태그포함)의 값을 넣어줌. (확인버튼의 기능. 둘다 잇어야 함.)
+					box.appendChild(this) //box에 str을 append 한다. (없으면 확인 버튼이 안뜸.)
+				}else{
+					box.innerHTML = memo
+					box.appendChild(this)
+					memo = ''
+				}
+			}
+		}	
+	</script>
+</body>
+</html>

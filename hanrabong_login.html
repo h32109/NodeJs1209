@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Login</title>
+</head>
+<body>
+<div style = "height: 736px; weight : 100%; display:grid;
+	grid-template-columns: 30% 40% 30%;
+	grid-template-rows: 30% 40% 30%; border: black">
+	<div></div>	
+	<div></div>	
+	<div></div>	
+	<div></div>	
+	<div id = login></div>	
+	<div></div>	
+	<div></div>	
+	<div></div>	
+	<div></div>	
+</div>
+<script>
+const temp =  `<form id = "form_join" class="form-signin">
+			<div style = "weight:100px; margin:0 auto">
+			<h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+			</div>
+		    <label for="inputId" class="sr-only">Id</label>
+		    <input type="text" id="uid" class="form-control" placeholder="Id" required="" autofocus="">
+			<br/>
+			<label for="inputPassword" class="sr-only">Password</label>
+		    <input type="password" id="pwd" class="form-control" placeholder="Password" required="">
+			<br/>
+			<br/>
+			<input type = button id ="btn" value = "login">
+			<div class="checkbox mb-3">
+		      
+		    </div>
+		    <div id="btn_login"></div>
+		    <p class="mt-5 mb-3 text-muted">©hanrabong</p>
+		  </form>`
+
+let login_box = document.getElementById('login')
+login_box.innerHTML=temp
+</script>
+</body>
+</html>

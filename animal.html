@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src = "Animal.js"></script>
+	<script src = "AnimalService.js"></script>
+</head>
+<body>
+<script>
+	window.onload =function(){
+		const init = new Initalizer()
+		init.animal()
+		const a = new Animal()
+		a.setName('멍멍')
+		//alert(`${a.getName()}`)
+		init.human()
+		let b = new Human()
+		b.setName('홍길동')
+		//alert(`${b.test()}`)
+		init.superHero()
+		let s = new SuperHero()
+		s.setName('아이언맨')
+		//alert(`${s.test()}`)
+	}
+</script>	
+</body>
+</html>

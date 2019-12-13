@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="component.js"></script>
+	<script src="VendingMachine.js"></script>
+	<script src="VendingMachineService.js"></script>
+	<script src="VendingMachineUtil.js"></script>
+	<style>
+	.wrapper{
+		width : 300px; 
+		display: grid; 
+		grid-template-columns: 40% 40% 20%; 
+	}
+	.wrapper div{
+		border : 1px solid black;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div id= "box">야</div>
+	
+<script>
+window.onload=()=>{
+	const box = document.getElementById('box')
+	box.innerHTML = ""
+	box.appendChild(compo.input('input','inputCost'))
+	box.appendChild(compo.input('button','btnCost'))
+	const btnCost = document.getElementById('btnCost')
+	btnCost.value = '투입'
+	const inputButton = document.getElementById('btn') 
+	btnCost.addEventListener("click", function(){
+		/* alert(init.forTest([3,6,5,2,4,1]))
+		alert(`foreach ${init.forEachTest([3,6,5,2,4,1])}`)
+		alert(`filter ${init.filterTest([3,6,5,2,4,1])}`)
+		alert(`map ${init.mapTest([3,6,5,2,4,1])}`)
+		alert(`find ${init.findTest([3,6,5,2,4,1])}`)
+		
+		alert(`find2 ${init.findTest2([{id:4, name:'a'},
+										{id:6, name:'b'},
+										{id:5, name:'c'}],8)}`) 
+		alert(`reduce ${looping.reduceTest([1000,500,100,200])}`)
+		alert(`of ${init.ofTest([{id:4, name:'a'},
+										{id:6, name:'b'},
+										{id:5, name:'c'}])}`)
+		alert(init.fromTest([3,6,5,2,4,1]))
+		alert(init.argumentsTest(3,6,5,2,4,1))
+		alert(init.joinTest(['3','6','2','4']))
+		alert(init.sortTest('3','6','2','4'))
+		alert(init.reverseTest('3','6','2','4'))
+		alert(`of ${init.todo([{ id: 4, content: 'JavaScript' },
+  									{ id: 1, content: 'HTML' },
+  									{ id: 2, content: 'CSS' }])}`)  */
+		const inputCoin = document.getElementById('inputCost').value
+		alert(`입력된 금액: ${service.insertCoin(inputCoin)}원`)
+		const temp = `<div class= "wrapper">
+		<div>콜라</div>
+		<div>1000원</div>
+		<div>1</div>
+		<div>사이다</div>
+		<div>900원</div>
+		<div>2</div>
+		<div>환타</div>
+		<div>500원</div>
+		<div>3</div>
+		</div>`
+		box.innerHTML = temp
+		box.prepend(compo.br())
+		box.prepend(compo.br())
+		box.prepend(compo.input('button','btnCost'))
+		const btnCost = document.getElementById('btnCost')
+		btnCost.value='투입'
+		box.prepend(compo.input('input','inputCost'))
+		document.getElementById('inputCost').value=inputCoin
+		box.appendChild(compo.input('text','menu'))
+		box.appendChild(compo.input('button','itemBtn'))
+		const select = document.getElementById('itemBtn')
+		select.value = "메뉴선택"
+		
+		select.addEventListener("click", function(){
+			const vms = service.vendingMachine()
+			const vm = new VendingMachine()
+			const selectedItem = document.getElementById('menu').value
+			const ItemName = service.selectItem(selectedItem)
+			box.appendChild(compo.div("inputCost"))
+			document.getElementById('inputCost').textContent = "아"
+			alert(`거스름돈:${service.returnChange()}`)
+		})
+	}) 
+}
+</script>
+</body>
+</html>
