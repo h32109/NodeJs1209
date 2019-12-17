@@ -19,15 +19,26 @@
 		border : 1px solid black;
 		text-align: center;
 	}
+	#box{
+		width: 400px;
+		margin : 0 auto;
+		text-align: -webkit-center;
+	}
+	#ItemName{
+		border : white;
+		width: 100px
+	}
 	</style>
 </head>
 <body>
-	<div id= "box">야</div>
-	
+	<h1 style ="width : 100px; margin: 0 auto">자판기</h1>
+	<br/><br/>
+	<div id= "box"></div>
+
 <script>
 window.onload=()=>{
 	const box = document.getElementById('box')
-	box.innerHTML = ""
+	box.innerText = ""
 	box.appendChild(compo.input('input','inputCost'))
 	box.appendChild(compo.input('button','btnCost'))
 	const btnCost = document.getElementById('btnCost')
@@ -80,15 +91,36 @@ window.onload=()=>{
 		box.appendChild(compo.input('button','itemBtn'))
 		const select = document.getElementById('itemBtn')
 		select.value = "메뉴선택"
-		
 		select.addEventListener("click", function(){
 			const vms = service.vendingMachine()
 			const vm = new VendingMachine()
 			const selectedItem = document.getElementById('menu').value
 			const ItemName = service.selectItem(selectedItem)
-			box.appendChild(compo.div("inputCost"))
-			document.getElementById('inputCost').textContent = "아"
-			alert(`거스름돈:${service.returnChange()}`)
+			box.appendChild(compo.br())
+			box.appendChild(compo.br())
+			box.appendChild(compo.div('ItemName'))
+			document.getElementById('ItemName').value = ItemName
+			box.appendChild(compo.br())
+			document.getElementById('ItemName').textContent = vm.getItemList()
+			box.appendChild(compo.input('text','qty')).value = '갯수입력'
+			box.appendChild(compo.input('button','check'))
+			document.getElementById('check').value = '확인'
+			check.addEventListener("click", function(){
+				const inputCoin = document.getElementById('inputCost').value
+				const selectedItem = document.getElementById('menu').value 
+				const qty = document.getElementById('qty').value
+				const change = service.returnChange(inputCoin, qty)
+				box.appendChild(compo.br())
+				box.appendChild(compo.br())
+				box.textContent = `잔액:`+change
+				box.textContent = `구입한 물품: `+selectItem 
+				box.appendChild(compo.br())
+				box.appendChild(compo.br())
+				box.append(`잔액:`+change)
+				box.appendChild(compo.br())
+				box.appendChild(compo.br())
+				box.append('이용해주셔서 감사합니다.')
+			})
 		})
 	}) 
 }

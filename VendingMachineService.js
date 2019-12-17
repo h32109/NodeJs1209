@@ -16,34 +16,39 @@ const service = {
 		return vm.getChange()
 	},
 	selectItem(itemNo){
-		let menu = [{no:1, name:"콜라"},
-					{no:2, name:"사이다"},
-					{no:3, name:"환타"}]
 		service.vendingMachine()
 		const vm = new VendingMachine()
-		let itemNos = [...arguments]
-		vm.setItemNo(itemNo)
-		alert(vm.getItemNo())
-		let itemsName = []
-		let findName = []
-		for(let i = 0; i<itemNo.length;i++){
-			findName = menu.find(j=>j.no == itemNo[i])
-			//itemsName.push(findName.name)
+		let itemName
+		switch(itemNo){
+			case '1' : itemName = '콜라'
+				break
+			case '2' : itemName = '사이다'
+				break
+			case '3' : itemName = '환타'
+				break
 		}
-		vm.setItemList(itemsName)
-		alert(findName)
+		vm.setItemNo(itemNo)
+		vm.setItemList(itemName)
+		alert(itemName)
 	},
-	returnChange(){
+	returnChange(inputCost, qty){
 		service.vendingMachine()
 		const vm = new VendingMachine()
-		let itemCost = []
-		itemCost.push(vm.getChange())
-		/* let items = vm.getItemNo()
-		items.forEach(i=>{if(items[i]==1)itemCost.push(1000)
-						if(items[i]==2)itemCost.push(900)
-						if(items[i]==3)itemCost.push(500)})
-		return itemCost.reduce((i,j)=>i-j) */
+		let itemNo = vm.getItemNo()
+		let cost = 0
+		switch(itemNo){
+			case '1' : cost = 1000
+				break
+			case '2' : cost = 900
+				break
+			case '3' : cost = 500
+				break
+		}
+		alert(vm.getChange())
+		alert(vm.getItemNo())
+		return inputCost-(cost*qty)
 
 	},
 	handleOrder(quantity, price, itemName, stock){}
 }
+
